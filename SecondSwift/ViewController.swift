@@ -76,13 +76,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 tableView.reloadRowsAtIndexPaths([tmp], withRowAnimation: UITableViewRowAnimation.Automatic)
             }
             expandedCellAtIndex = indexPath
-//            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         } else if indexPath.row == expandedCellAtIndex?.row {
             expandedCellAtIndex = nil
-//            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         } else if expandedCellAtIndex == nil {
             expandedCellAtIndex = indexPath
-//            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
         tableView.reloadData()
     }
