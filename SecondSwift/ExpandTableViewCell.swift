@@ -9,7 +9,15 @@
 import Foundation
 import UIKit
 
+@objc protocol ExpandDelegate {
+    func buttonPressed(action: String)->()
+}
+
 class ExpandTableViewCell : UITableViewCell {
+    // MARK: Properties
+    
+    weak var delegate: ExpandDelegate?
+    
     let tagNameLabel : UILabel
     let rateFirstTarget : UIButton
     let rateSecondTarget : UIButton
@@ -57,10 +65,11 @@ class ExpandTableViewCell : UITableViewCell {
     
     func ratedFirstTarget(sender: UIButton!) {
         println("first target")
+        delegate?.buttonPressed("first")
     }
     
     func ratedSecondTarget(sender: UIButton!) {
         println("second target")
+        delegate?.buttonPressed("second")
     }
-    
 }

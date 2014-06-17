@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ExpandDelegate  {
     
     @IBOutlet var myTableView : UITableView
     
@@ -45,13 +45,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         if indexPath == expandedCellAtIndex {
             let cell:ExpandTableViewCell = self.myTableView.dequeueReusableCellWithIdentifier("ExpandCell") as ExpandTableViewCell
+            cell.delegate = self
             
             cell.tagNameLabel.text = "Rate Target"
+            
             return cell
         } else {
             let cell:NormalTableViewCell = self.myTableView.dequeueReusableCellWithIdentifier("NormalCell") as NormalTableViewCell
 
             cell.tagNameLabel.text = "Tag #\(objects[indexPath.row])"
+            
             return cell
         }
     }
@@ -82,6 +85,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             expandedCellAtIndex = indexPath
         }
         tableView.reloadData()
+    }
+    
+    // MARK: ExpandDelegate
+    
+    func buttonPressed(action: String) -> () {
+        println("\(action)")
     }
 }
 
