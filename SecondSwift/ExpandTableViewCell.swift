@@ -13,14 +13,17 @@ import UIKit
     func buttonPressed(action: String)->()
 }
 
+typealias CompletionBlock = (string: String) -> ()
+
 class ExpandTableViewCell : UITableViewCell {
     // MARK: Properties
-    
     weak var delegate: ExpandDelegate?
     
     let tagNameLabel : UILabel
     let rateFirstTarget : UIButton
     let rateSecondTarget : UIButton
+    
+    var buttonPressed: CompletionBlock?
     
     init(style: UITableViewCellStyle,
         reuseIdentifier: String!) {
@@ -70,6 +73,7 @@ class ExpandTableViewCell : UITableViewCell {
     
     func ratedSecondTarget(sender: UIButton!) {
         println("second target")
-        delegate?.buttonPressed("second")
+//        delegate?.buttonPressed("second")
+        buttonPressed!(string: "Second button pressed!")
     }
 }

@@ -49,6 +49,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             cell.tagNameLabel.text = "Rate Target"
             
+            cell.buttonPressed = { msg in
+                println("Message [\(msg)]")
+            }
+            
             return cell
         } else {
             let cell:NormalTableViewCell = self.myTableView.dequeueReusableCellWithIdentifier("NormalCell") as NormalTableViewCell
