@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet var myTableView : UITableView
     
-    var objects : String[] = ["a", "b", "c", "d", "f", "g"]
+    var objects = ["a", "b", "c", "d", "f", "g"]
     
     var expandedCellAtIndex : NSIndexPath?
     
