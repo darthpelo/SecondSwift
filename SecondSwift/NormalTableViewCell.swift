@@ -10,19 +10,22 @@ import Foundation
 import UIKit
 
 class NormalTableViewCell : UITableViewCell {
-     let tagNameLabel : UILabel
+    var tagNameLabel : UILabel
     
-    init(style: UITableViewCellStyle,
-        reuseIdentifier: String!) {
-            
-            tagNameLabel = UILabel(frame: CGRectMake(10, 10, 280, 34))
-            tagNameLabel.font = UIFont(name: "Helvetica", size: 18)
-            tagNameLabel.textColor = UIColor.darkTextColor()
-            tagNameLabel.backgroundColor = UIColor.whiteColor()
-            
-            super.init(style: style, reuseIdentifier: reuseIdentifier)
-            
-            self.contentView.addSubview(tagNameLabel)
+    required init(coder aDecoder: NSCoder!) {
+        fatalError("NSCoding not supported")
+    }
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String!) {
+        
+        tagNameLabel = UILabel(frame: CGRectMake(10, 10, 280, 34))
+        tagNameLabel.font = UIFont(name: "Helvetica", size: 18)
+        tagNameLabel.textColor = UIColor.darkTextColor()
+        tagNameLabel.backgroundColor = UIColor.whiteColor()
+        
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.contentView.addSubview(tagNameLabel)
     }
 }
 

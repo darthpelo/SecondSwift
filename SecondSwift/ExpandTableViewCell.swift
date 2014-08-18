@@ -19,38 +19,42 @@ class ExpandTableViewCell : UITableViewCell {
     // MARK: Properties
     weak var delegate: ExpandDelegate?
     
-    let tagNameLabel : UILabel
+    var tagNameLabel : UILabel
     let rateFirstTarget : UIButton
     let rateSecondTarget : UIButton
     
     var buttonPressed: CompletionBlock?
     
-    init(style: UITableViewCellStyle,
-        reuseIdentifier: String!) {
-            
-            tagNameLabel = UILabel(frame: CGRectMake(10, 10, 280, 34))
-            tagNameLabel.font = UIFont(name: "Helvetica", size: 18)
-            tagNameLabel.textColor = UIColor.darkTextColor()
-            tagNameLabel.backgroundColor = UIColor.whiteColor()
-            
-            rateFirstTarget = UIButton(frame: CGRectZero)
-            rateFirstTarget.setTitle("Rate first target", forState: .Normal)
-            rateFirstTarget.tintColor = UIColor.whiteColor()
-            rateFirstTarget.backgroundColor = UIColor.darkGrayColor()
-            
-            rateSecondTarget = UIButton(frame: CGRectZero)
-            rateSecondTarget.setTitle("Rate second target", forState: .Normal)
-            rateSecondTarget.tintColor = UIColor.whiteColor()
-            rateSecondTarget.backgroundColor = UIColor.darkGrayColor()
-            
-            super.init(style: style, reuseIdentifier: reuseIdentifier)
-            
-            rateFirstTarget.addTarget(self, action: Selector.convertFromStringLiteral("ratedFirstTarget:"), forControlEvents: .TouchUpInside)
-            rateSecondTarget.addTarget(self, action: Selector.convertFromStringLiteral("ratedSecondTarget:"), forControlEvents: .TouchUpInside)
-            
-            self.contentView.addSubview(rateFirstTarget)
-            self.contentView.addSubview(rateSecondTarget)
-            self.contentView.addSubview(tagNameLabel)
+    required init(coder aDecoder: NSCoder!) {
+        fatalError("NSCoding not supported")
+    }
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String!) {
+        
+        tagNameLabel = UILabel(frame: CGRectMake(10, 10, 280, 34))
+        tagNameLabel.font = UIFont(name: "Helvetica", size: 18)
+        tagNameLabel.textColor = UIColor.darkTextColor()
+        tagNameLabel.backgroundColor = UIColor.whiteColor()
+        
+        rateFirstTarget = UIButton(frame: CGRectZero)
+        rateFirstTarget.setTitle("Rate first target", forState: .Normal)
+        rateFirstTarget.tintColor = UIColor.whiteColor()
+        rateFirstTarget.backgroundColor = UIColor.darkGrayColor()
+        
+        rateSecondTarget = UIButton(frame: CGRectZero)
+        rateSecondTarget.setTitle("Rate second target", forState: .Normal)
+        rateSecondTarget.tintColor = UIColor.whiteColor()
+        rateSecondTarget.backgroundColor = UIColor.darkGrayColor()
+        
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        rateFirstTarget.addTarget(self, action: Selector.convertFromStringLiteral("ratedFirstTarget:"), forControlEvents: .TouchUpInside)
+        rateSecondTarget.addTarget(self, action: Selector.convertFromStringLiteral("ratedSecondTarget:"), forControlEvents: .TouchUpInside)
+        
+        self.contentView.addSubview(rateFirstTarget)
+        self.contentView.addSubview(rateSecondTarget)
+        self.contentView.addSubview(tagNameLabel)
+
     }
     
     override func layoutSubviews() {
